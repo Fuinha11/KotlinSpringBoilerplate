@@ -1,0 +1,23 @@
+services:
+    postgres:
+        image: 'postgres:latest'
+        container_name: example-db
+        hostname: example-db
+        environment:
+          POSTGRES_USER: root
+          POSTGRES_PASSWORD: root
+          POSTGRES_DB: example
+        volumes:
+          - example-db-data:/var/lib/postgresql/data
+          - ./db:/docker-entrypoint-initdb.d
+        ports:
+          - "9432:5432"
+        networks:
+          - docker-network  
+networks:
+  docker-network:
+    name: docker-network
+    driver: bridge
+    external: true
+volumes:
+  example-db-data:

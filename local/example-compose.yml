@@ -1,0 +1,15 @@
+services:
+  'example':
+    container_name: 'example'
+    image: example:latest
+    networks:
+      - docker-network
+    ports:
+      - "9999:9090"
+    environment:
+      spring.datasource.url: jdbc:postgresql://example-db:5432/example?autoReconnect=true
+networks:
+  docker-network:
+    name: docker-network
+    driver: bridge
+    external: true

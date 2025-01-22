@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: example
+  datasource:
+    url: jdbc:postgresql://localhost:9432/example
+    username: root
+    password: root
+  jpa:
+    open-in-view: true
+    properties:
+      hibernate:
+        format_sql: 'true'
+    hibernate:
+      ddl-auto: none
+
+server:
+  port: 9090
+  servlet:
+    context-path: /example/api
+
+springdoc:
+  swagger-ui:
+    defaultModelsExpandDepth: -1
+    oauth:
+      clientId: user
+      clientSecret: pass
+      useBasicAuthenticationWithAccessCodeGrant: true
