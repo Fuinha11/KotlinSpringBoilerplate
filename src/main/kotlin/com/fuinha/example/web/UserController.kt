@@ -16,7 +16,7 @@ class UserController(
 ) {
 
     @GetMapping("/{userId}")
-    fun getOrganizationById(@PathVariable userId: UUID): BaseResponse<UserDto> {
+    fun getUserById(@PathVariable userId: UUID): BaseResponse<UserDto> {
         return BaseResponse(UserDto(userService.getById(userId)))
     }
 }

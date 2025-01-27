@@ -5,17 +5,13 @@ import org.hibernate.annotations.UuidGenerator
 import java.util.*
 
 @Entity
-data class Organization(
+class Organization(
     @Column(nullable = false)
     var displayName: String,
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     var organizationType: OrganizationType,
-
-    @OneToOne
-    @JoinColumn
-    var owner: User,
 
     @Id
     @UuidGenerator(style = UuidGenerator.Style.TIME)
