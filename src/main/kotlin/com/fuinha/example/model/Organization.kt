@@ -13,10 +13,6 @@ data class Organization(
     @Enumerated(EnumType.STRING)
     var organizationType: OrganizationType,
 
-    @OneToOne
-    @JoinColumn
-    var owner: User,
-
     @Id
     @UuidGenerator(style = UuidGenerator.Style.TIME)
     val id: UUID? = null

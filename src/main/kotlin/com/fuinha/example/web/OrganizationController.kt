@@ -3,6 +3,7 @@ package com.fuinha.example.web
 import com.fuinha.example.service.OrganizationService
 import com.fuinha.example.web.dto.BaseResponse
 import com.fuinha.example.web.dto.response.OrganizationDto
+import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
@@ -15,6 +16,7 @@ class OrganizationController(
     val organizationService: OrganizationService
 ) {
 
+    @PreAuthorize("hasAnyRole('SUPER_USER')")
     @GetMapping("/{organizationId}")
     fun getOrganizationById(@PathVariable organizationId: UUID): BaseResponse<OrganizationDto> {
         return BaseResponse(OrganizationDto(organizationService.getById(organizationId)))
